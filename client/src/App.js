@@ -10,6 +10,7 @@ import Home from './pages/Home';
 import { useSelector } from 'react-redux';
 import ProtectedRoute from './components/ProtectedRoute';
 import PublicRoute from './components/PublicRoute';
+import ApplyEvent from './components/ApplyEvent';
 
 function App() {
   const { loading } = useSelector(state => state.alerts)
@@ -26,9 +27,10 @@ function App() {
       <Toaster position="top-center" reverseOrder={false} />
 
       <Routes>
-        <Route path='/login' element={<PublicRoute><Login /></PublicRoute>} />
-        <Route path='/register' element={<PublicRoute><Register /></PublicRoute>} />
-        <Route path='/' element={<ProtectedRoute><Home /></ProtectedRoute>} />
+        <Route path='/login' element={<PublicRoute><Login/></PublicRoute>} />
+        <Route path='/register' element={<PublicRoute><Register/></PublicRoute>} />
+        <Route path='/' element={<ProtectedRoute><Home/></ProtectedRoute>} />
+        <Route path='/applyevent' element={<ProtectedRoute><ApplyEvent/></ProtectedRoute>} />
       </Routes>
     </BrowserRouter>
 

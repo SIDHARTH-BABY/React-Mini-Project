@@ -7,6 +7,9 @@ import { useSelector, useDispatch } from "react-redux"
 import axios from 'axios'
 import { hideLoading, showLoading } from '../redux/alertsSlice'
 
+
+
+
 function Login() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -18,6 +21,8 @@ function Login() {
       const response = await axios.post('/api/user/login', values)
       dispatch(hideLoading())
       if (response.data.success) {
+
+
         toast.success(response.data.message)
         toast("redirecting to home page")
         localStorage.setItem("token", response.data.data)

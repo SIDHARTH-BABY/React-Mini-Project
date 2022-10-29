@@ -28,6 +28,7 @@ router.post('/register',async(req,res)=>{
 
       
     } catch (error) {   
+        console.log(error);
         res.status(500).send({message :'error creating user',success: false, error }) 
         
     }
@@ -66,6 +67,7 @@ router.post('/login',async(req,res)=>{
 })
 
 router.post('/get-user-info-by-id',authMiddleware, async(req,res)=>{
+    
     try {
         const user = await User.findOne({_id:req.body.userId})
         if(!user){ 
@@ -75,7 +77,8 @@ router.post('/get-user-info-by-id',authMiddleware, async(req,res)=>{
         }else{
             res.status(200).send({success:true,data:{
                 name:user.name,
-                email:user.email 
+                email:user.email, 
+                isAdmin:user.isAdmin
             }})
         }
     } catch (error) {

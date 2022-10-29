@@ -57,6 +57,9 @@
   box-shadow: 0 0 2px grey;
   border-radius: 0 !important;
 }
+.logo{
+  color: antiquewhite;
+}
 
 .primary-button {
   background-color: cornflowerblue !important;

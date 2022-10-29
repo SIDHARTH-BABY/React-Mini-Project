@@ -8,7 +8,7 @@ import { useDispatch } from 'react-redux'
 import { hideLoading, showLoading } from '../redux/alertsSlice'
 
 function Register() {
-  const dispatch = useDispatch( )
+  const dispatch = useDispatch()
   const navigate = useNavigate()
 
   const onFinish = async (values) => {
@@ -27,10 +27,11 @@ function Register() {
     } catch (error) {
       dispatch(hideLoading())
       toast.error('something went wrong')
- 
+       
     }
 
   }
+
   return (
     <div className='authentication'>
       <div className='aunthentication-form card p-3'>
