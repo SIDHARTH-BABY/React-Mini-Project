@@ -49,11 +49,11 @@ function Login() {
           <Form.Item label='Password' name='password'>
             <Input placeholder='Password' type='password' />
           </Form.Item>
+          <div className='d-flex flex-column'>
+            <Button className='primary-button my-2 full-width-button' htmlType='submit'>Login</Button>
 
-          <Button className='primary-button my-2' htmlType='submit'>Login</Button>
-
-          <Link to='/register' className='anchor my-2'>Register</Link>
-
+            <Link to='/register' className='anchor my-2'>Register</Link>
+          </div>
 
         </Form>
       </div>

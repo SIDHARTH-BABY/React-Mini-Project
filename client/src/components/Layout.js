@@ -1,15 +1,20 @@
+import { Badge } from "antd";
 import React, { useContext } from "react";
 
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { userContext } from "../pages/Home";
+import { channelContext, userContext } from '../App';
 import "./layout.css";
 
 function Layout({ children }) {
   const navigate = useNavigate();
   const user = useContext(userContext);
 
+  console.log(user ? user.unSeenNot.length : 'hell', 'kittiya bhagyamm');
+  const channel = useContext(channelContext);
+
   console.log("vannu makkalee");
-  console.log(user, "it user");
+  console.log(channel);
+
 
   const location = useLocation();
   console.log(location);
@@ -25,12 +30,9 @@ function Layout({ children }) {
     },
     {
       name: "Check Status",
-      link: "/Status",
+      link: "/checkStatus",
     },
-    {
-      name: "Logout",
-      link: "/logout",
-    },
+
   ];
 
   const adminMenu = [
@@ -39,20 +41,14 @@ function Layout({ children }) {
       link: "/",
     },
     {
-      name: "Users",
-      link: "/users",
+      name: "Event List",
+      link: "/admin/eventList",
     },
-    {
-      name: "Check Status",
-      link: "/Status",
-    },
-    {
-      name: "Logout",
-      link: "/logout",
-    },
+
+
   ];
 
-  const menuToBeRendered = user ? adminMenu : userMenu;
+  const menuToBeRendered = channel ? adminMenu : userMenu;
 
   return (
     <div className="main">
@@ -73,6 +69,11 @@ function Layout({ children }) {
                 </div>
               );
             })}
+            <div className={`d-flex menu-item`} >
+              <Badge count={user ? user.unSeenNot.length : "0"} onClick={() => navigate('/notifications')} >
+                <Link>Notifications</Link>
+              </Badge>
+            </div>
 
             <div
               className={`d-flex menu-item`}

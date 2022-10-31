@@ -27,7 +27,7 @@ function Register() {
     } catch (error) {
       dispatch(hideLoading())
       toast.error('something went wrong')
-       
+
     }
 
   }
@@ -50,11 +50,11 @@ function Register() {
           <Form.Item label='Password' name='password'>
             <Input placeholder='Password' type='password' />
           </Form.Item>
+          <div className='d-flex flex-column'>
+            <Button className='primary-button my-2' htmlType='submit'>Register</Button>
 
-          <Button className='primary-button my-2' htmlType='submit'>Register</Button>
-
-          <Link to='/login' className='anchor my-2'>Click Here To Login</Link>
-
+            <Link to='/login' className='anchor my-2'>Click Here To Login</Link>
+          </div>
 
         </Form>
       </div>
