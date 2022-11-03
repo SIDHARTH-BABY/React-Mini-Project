@@ -9,15 +9,15 @@ function Layout({ children }) {
   const navigate = useNavigate();
   const user = useContext(userContext);
 
-  console.log(user ? user.unSeenNot.length : 'hell', 'kittiya bhagyamm');
+  
   const channel = useContext(channelContext);
 
   console.log("vannu makkalee");
-  console.log(channel);
+
 
 
   const location = useLocation();
-  console.log(location);
+  
 
   const userMenu = [
     {
@@ -30,8 +30,9 @@ function Layout({ children }) {
     },
     {
       name: "Check Status",
-      link: "/checkStatus",
+      link: "/showevents",
     },
+    
 
   ];
 
@@ -44,7 +45,10 @@ function Layout({ children }) {
       name: "Event List",
       link: "/admin/eventList",
     },
-
+    {
+      name: "Slots",
+      link: "/admin/slots",
+    },
 
   ];
 

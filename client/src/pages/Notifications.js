@@ -8,8 +8,7 @@ function Notifications() {
 
     const user = useContext(notificationContext);
 
-    console.log(user, 'jam  mm');
-
+   
 
 
 
@@ -19,7 +18,7 @@ function Notifications() {
 
     }, [])
 
-    console.log(value, 'polli sanam');
+   
 
 
     return (
@@ -27,14 +26,7 @@ function Notifications() {
             <Layout>
                 <h1 className='page-title'>Notifications</h1>
 
-                {/* <ul>
-                    {
-                        value.map(hai =>
-                            <li key={hai.id}>{hai.message} </li>
-
-                        )
-                    }
-                </ul> */}
+               
                  
 
                 <Tabs>

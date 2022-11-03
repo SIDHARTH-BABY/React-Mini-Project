@@ -3,6 +3,8 @@ const router = express.Router()
 const User = require("../models/userModel")
 const Event = require("../models/eventModel")
 const authMiddleware = require("../middlewares/authMiddleware")
+const Slot = require('../models/slotModel')
+
 
 
 
@@ -49,5 +51,61 @@ router.post('/change-events-status', authMiddleware, async (req, res) => {
     }
 
 })
+
+router.post("/slot", async (req, res) => {
+    try {
+      const addSlot = new Slot(req.body)
+      await addSlot.save()
+     
+      res.status(200).send({ message: "Slot added successfully", success: true })
+    } catch (error) {
+      res.status(500).send({ message: "Error getting slot adding process", success: false, error })
+      console.log(error);
+    }
+  });
+
+  router.get("/getslot", async (req, res) => {
+    try {
+      const slotlist =  await Slot.find({})
+      res.status(200).send({ message: "fetch slot successfully", success: true, data:slotlist })
+    } catch (error) {
+      res.status(500).send({ message: "Error fetching slots", success: false, error })
+      console.log(error);
+    }
+  });
+
+
+  router.get("/getapps", async (req, res) => {
+    try {
+      const apps =  await Event.find({status: 'approved', slot:null})
+      res.status(200).send({ message: "fetch applications successfully", success: true, data:apps })
+    } catch (error) {
+      res.status(500).send({ message: "Error fetching applications", success: false, error })
+      console.log(error);
+    }
+  });
+
+  router.post("/slotbook", async (req, res) => {
+    try {
+      const appId = req.body.appId
+      const slotId = req.body.slotId
+      console.log(appId);
+      console.log(slotId);
+      const apps = await Event.findByIdAndUpdate(appId,{
+        slot :slotId
+      })
+      await apps.save()
+      const slot= await Slot.findByIdAndUpdate(slotId,{
+        status :'Booked'
+      })
+  
+      res.status(200).send({ message: "Slot Booking successfully", success: true })
+    } catch (error) {
+      res.status(500).send({ message: "Error getting slot Booking process", success: false, error })
+      console.log(error);
+    }
+  });
+
+
 
 module.exports = router;  

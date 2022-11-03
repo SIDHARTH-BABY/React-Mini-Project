@@ -1,14 +1,15 @@
 
 import { Button, Col, Form, Input, Row } from 'antd';
-
 import { useDispatch } from 'react-redux'
 import { hideLoading, showLoading } from '../redux/alertsSlice'
 import Layout from '../components/Layout';
 import toast from 'react-hot-toast'
 import { Link, useNavigate } from 'react-router-dom'
 import { userContext } from '../App';
-import React, { useContext } from "react";
-import axios from 'axios'
+import React, { useContext } from "react"; 
+import axios from 'axios';
+
+
 
 function ApplyEvent() {
   const dispatch = useDispatch()

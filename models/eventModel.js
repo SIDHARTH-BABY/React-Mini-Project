@@ -48,8 +48,15 @@ const eventSchema = new mongoose.Schema(
         status:{
             type: String,
             default:'pending'
-        }
-
+         },
+        slot: {
+            type: mongoose.Types.ObjectId,
+            ref: 'Slots'
+        },
+        userId: {
+            type: mongoose.Types.ObjectId,
+            ref: 'Users'
+        },
     },
     {
         timestamps: true

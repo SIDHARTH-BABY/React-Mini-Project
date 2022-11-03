@@ -43,7 +43,7 @@ function EventList() {
             dispatch(hideLoading())
             if (response.data.success) {
                 toast.success(response.data.message)
-                console.log(response.data.data, 'event deatailsss ');
+               
                 getEventdata()
 
             }

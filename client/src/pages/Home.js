@@ -10,7 +10,7 @@ function Home() {
 
   const user = useContext(userContext);
 
-  console.log(user, 'its home');
+ 
 
 
   return (

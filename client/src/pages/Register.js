@@ -20,7 +20,7 @@ function Register() {
         toast.success(response.data.message)
         toast("redirecting to login page")
         navigate('/login')
-        console.log(values);
+       
       } else {
         toast.error(response.data.message)
       }

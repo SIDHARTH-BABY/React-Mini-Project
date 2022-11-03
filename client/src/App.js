@@ -18,6 +18,8 @@ import axios from 'axios'
 import Notifications from './pages/Notifications';
 import EventList from './pages/Admin/EventList';
 import CheckStatus from './pages/CheckStatus';
+import Slots from './pages/Admin/Slots';
+import ShowEvent from './components/ShowEvent';
 
 export const userContext = React.createContext()
 export const channelContext = React.createContext()
@@ -29,9 +31,9 @@ function App() {
 
   const [details, setDetails] = useState({})
 
-  console.log('ivide varanam');
 
-  console.log(details.data ? details.data.isAdmin : 'ooooo');
+
+
 
   const getData = async () => {
 
@@ -43,7 +45,7 @@ function App() {
           }
         })
       console.log(response.data, 'haii');
-      console.log('hello');
+
 
       setDetails(response.data)
 
@@ -84,6 +86,8 @@ function App() {
               <Route path='/notifications' element={<ProtectedRoute><Notifications /></ProtectedRoute>} />
               <Route path='/checkStatus' element={<ProtectedRoute><CheckStatus /></ProtectedRoute>} />
               <Route path='/admin/eventList' element={<ProtectedRoute><EventList /></ProtectedRoute>} />
+              <Route path='/admin/slots' element={<ProtectedRoute><Slots /></ProtectedRoute>} />
+              <Route path='/showevents' element={<ProtectedRoute><ShowEvent /></ProtectedRoute>} />
 
             </Routes>
           </BrowserRouter>

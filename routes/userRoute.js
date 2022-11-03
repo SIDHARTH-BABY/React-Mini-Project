@@ -145,5 +145,17 @@ router.post('/mark-all-notifications-as-seen', authMiddleware, async (req, res) 
 })
 
 
+router.post("/get-one-apps", authMiddleware, async (req, res) => {
+    try {
+      const userId = req.body.userId
+      const applications = await Event.find({ userId }).populate('slot').exec()
+      res.status(200).send({ message: "application data fetched successfully", success: true, data: applications })
+    } catch (error) {
+      console.log(error)
+      res.status(500).send({ message: "Error getting user info", success: false, error })
+    }
+  });
+
+
 
 module.exports = router;
